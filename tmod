@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Ich schreibe jetzt ein Programm, welches probiert Programm direkt Startklar
+# zu machen, also touch, chmod und dann vim startet (wenn das geht)
+
+function fehler() {
+    echo "Fehler bei der Eingabe:"
+    echo "tmod <file_name> <chmod>"
+    echo "or use tmod h for help"
+}
+
+var_name="$1"
+var_chmod="$2"
+var_vim="$3"
+
+if [[ -n "${var_name}" && "${var_chmod}" =~ ^[0-9]{3}$ ]]; then
+    touch "${var_name}"
+    echo "${var_name} is touched"
+    chmod "${var_chmod}" "${var_name}"
+    echo "${var_name} has changed its mod to ${var_chmod}"
+
+    if [[ "${var_vim}" == "vim" || "${var_vim}" == "v" ]]; then
+        vim "${var_name}"
+    else
+        echo "------------------------------------"
+        echo "Die Datei ${var_name} wurde angelegt"
+        echo "------------------------------------"
+    fi
+elif [ "${var_name}" == "-h" ]; then
+    echo "This tool was made for making 3 things in one:"
+    echo "1. touch the new file"
+    echo "2. change the mod of the file"
+    echo "3. (optional) open vim"
+    echo " -> tmod <file_name> <chmod> <optional: v/vim>"
+else
+    echo "File name is empty or chmod isn't a 3-digit number"
+    fehler
+    exit 1
+fi
+
