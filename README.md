@@ -8,4 +8,5 @@ I made it, because if make a lot of nwe files (and they should be executable) I 
  - 1 the dirty, fast way
     - go into the Folder type in ```bash setup_tmod.sh```
  - 2 the gentleman way
-    - change the modification \ ```chmod 700 setup_tmod.sh``` \ and execute it```./setup_tmod.sh```
+    - change the modification  ```chmod 700 setup_tmod.sh```
+    - execute it```./setup_tmod.sh``` and have fun programming!
